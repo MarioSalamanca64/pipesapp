@@ -1,0 +1,93 @@
+<div class="text-layaout">
+    <h1>pipes personalizados</h1>
+    <p>
+        Pipes creados por {{'nosotros'| mayusculas:enMayusculas }}
+    </p>
+ 
+</div>
+<!-- nombre de barra es toolbar -->
+<p-toolbar>
+    <div class="p-toolbar-group-left"></div>
+    
+    <div class="p-toolbar-group-right">
+        <button (click)="cambiar()"
+        pButton 
+        pRipple 
+        type="button" 
+        label="Primary" 
+        class="p-button-text p-mr-1">
+         toggle mayusculas
+        </button>
+      <button pButton
+              icon="pi pi-sort"
+              label="Por nombre"
+              class="p-mr-1 p-button-warning"  
+              (click)="cambiarOrden('nombre')"></button>
+        <button pButton
+              icon="pi pi-sort"
+              label="Valores"
+              class="p-mr-1 p-button-succes"
+              (click)="cambiarOrden('vuela')"></button>
+        <button pButton
+              icon="pi pi-sort"
+              label="Por color"
+              class="p-mr-1 p-button-help"
+              (click)="cambiarOrden('color')"></button>
+              
+    </div>
+</p-toolbar>
+
+<div class="p-grid">
+    <div class="p-col p-mt-2">
+        <!-- cambio de value de heroes que hemos echo  -->
+        <!-- ordenar es un pipe echo por nosotros -->
+        <p-table [value]="heroes | ordenar:ordenarPor">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Vuela</th>
+                    <th>Color</th>
+                </tr>
+            </ng-template>
+            <!-- let es la declaracion de variables -->
+            <ng-template pTemplate="body" let-heroe>
+                <tr>
+                    <td>{{heroe.nombre}}</td>
+                    <td>{{heroe.vuela | vuela |titlecase}}</td>
+                    <td>{{heroe.color}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+ 
+
+
+
+<div class="p-grid">
+    <div class="p-col p-mt-2">
+        <!-- slice:0 mandar una copia sin que se modifique ya que si tocas un botton movia la lista de -->
+        <p-table [value]="heroes | slice:0">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+                    <th pSortableColumn="vuela">Vuela <p-sortIcon field="vuela"></p-sortIcon></th>
+                    <th pSortableColumn="color">Color <p-sortIcon field="color"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <!-- let es la declaracion de variables -->
+            <ng-template pTemplate="body" let-heroe>
+                <tr>
+                    <td>{{heroe.nombre}}</td>
+                    <td>{{heroe.vuela | vuela |titlecase}}</td>
+                    <td>{{heroe.color}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+
+
+
+   

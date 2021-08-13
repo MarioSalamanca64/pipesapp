@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* saca los estilos de 
+node_modules/primeng/resources/themes/vela-blue/theme.css */
+html,body{
+    margin:10px;
+    background-color:var(--surface-b);
+    font-family: var(--font-family);
+}
+
+.text-layaout{
+    color: var(--text-color);
+}
+
+    
